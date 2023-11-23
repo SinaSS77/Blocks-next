@@ -1,9 +1,20 @@
+import { db } from "@/db"; // (../../../db) it is a feature in NextJS that @ means in the root
+import { redirect } from "next/navigation";
 export default function BlockCreatePage(){
-  async function createBlock(formData){
+  async function createBlock(formData: FormData){
+    // Mark this function as a SERVER action
     "use server"
+    // Get the form data
+      const title = formData.get("title") as string;
+      const code = formData.get("code") as string;
+
+    // Insert the data into the database using prisma
+     const block =  await db.block.create({data: {title, code} })
+    //Redirect the user back to the homepage
+    redirect("/")
   }
   return (
-    <form>
+    <form action={createBlock}>
       <h3 className="font-bold m-3">Create a Block</h3>
       <div className="flex flex-col gap-4">
       <div className="flex gap-4">
