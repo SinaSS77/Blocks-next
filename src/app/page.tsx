@@ -7,7 +7,7 @@ export default async function Home() {
     <Link
       key={block.id}
       href={`/blocks/${block.id}`}
-      className="flex justify-between items-center p-2 border rounded"
+      className="flex justify-between items-center p-3 border rounded"
     >
       {block.title}
       <div>View</div>
@@ -16,7 +16,7 @@ export default async function Home() {
 
   return (
     <div>
-      <div className="flex m-2 justify-between items-center">
+      <div className="flex m-3 justify-between items-center">
         <h1 className="text-xl font-bold">Blocks</h1>
         <Link href="/blocks/new" className="border p-2 rounded">
           New
